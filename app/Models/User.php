@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'shopify_domain',
+        'shopify_token',
     ];
 
     /**

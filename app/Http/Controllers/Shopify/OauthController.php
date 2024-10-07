@@ -113,18 +113,18 @@ class OauthController extends Controller
 
     protected function updateOrCreateUser($data)
     {
-        $user = User::where('store_url', $data->shop)->first();
+        $user = User::where('shopify_domain', $data->shop)->first();
         if ($user) {
             $user->update([
-                'access_token' => $data->access_token,
+                'shopify_token' => $data->access_token,
                 'name' => $data->shop_owner,
                 'email' => $data->email,
-                'store_url' => $data->shop,
+                'shopify_domain' => $data->shop,
             ]);
         } else {
             $user = User::create([
-                'store_url' => $data->shop,
-                'access_token' => $data->access_token,
+                'shopify_domain' => $data->shop,
+                'shopify_token' => $data->access_token,
                 'name' => $data->shop_owner,
                 'email' => $data->email,
             ]);
